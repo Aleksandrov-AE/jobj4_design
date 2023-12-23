@@ -2,6 +2,8 @@ package ru.job4j.assertj;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.offset;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoxTest {
 
@@ -51,13 +53,13 @@ class BoxTest {
     void getAreaWithInvalidEdge() {
         Box box = new Box(4, -1);
         double area = box.getArea();
-        assertThat(area).isEqualTo(0);
+        assertEquals(0d, area, 0.0001);
     }
 
     @Test
     void getAreaForCube() {
         Box box = new Box(8, 3);
         double area = box.getArea();
-        assertThat(area).isEqualTo(6 * (3 * 3));
+        assertThat(area).isCloseTo(54d, offset(0.0001));
     }
 }
