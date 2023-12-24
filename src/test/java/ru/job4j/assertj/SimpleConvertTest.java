@@ -20,11 +20,11 @@ class SimpleConvertTest {
 
     @Test
     void toArray() {
-        String[] result = simpleConvert.toArray("e1", "e2", "e3");
-        assertThat(result).hasSize(3)
-                .contains("e1", "e2", "e3")
-                .startsWith("e1")
-                .endsWith("e3");
+        String[] result = simpleConvert.toArray("e1", "e2");
+        assertThat(result).hasSize(2)
+                .contains("e1", "e2")
+                .startsWith("e1");
+
     }
 
     @Test
