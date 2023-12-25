@@ -10,22 +10,14 @@ public class EvenNumbersIterator implements Iterator<Integer> {
 
     public EvenNumbersIterator(int[] data) {
         this.data = data;
-        index = 0;
     }
 
     @Override
     public boolean hasNext() {
-        boolean result = false;
-        while (index < data.length)  {
-            if (data[index] % 2 != 0) {
-                index++;
-            } else {
-                result = true;
-                break;
-            }
+        while (index < data.length && data[index] % 2 != 0) {
+            index++;
         }
-        return result;
-
+        return index < data.length;
     }
 
     @Override
