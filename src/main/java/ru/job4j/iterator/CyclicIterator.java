@@ -13,26 +13,16 @@ public class CyclicIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        if (data == null || data.isEmpty()) {
-            return false;
-        }
-        boolean allNull = data.stream().allMatch(Objects::isNull);
-        if (allNull) {
-            return  false;
-        }
-        if (index == data.size()) {
-            index = 0;
-        }
-        while (data.get(index) == null) {
-            index++;
-        }
-        return true;
+            return !data.isEmpty();
     }
 
     @Override
     public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
+        }
+        if (index == data.size()) {
+            index = 0;
         }
         return data.get(index++);
     }
