@@ -10,6 +10,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     private final static int START_CAPACITY = 10;
 
 
+
     public SimpleArrayList(int capacity) {
         if (capacity < 10) {
             capacity = START_CAPACITY;
@@ -22,36 +23,37 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     @Override
     public void add(T value) {
         if (size == container.length) {
-            container = Arrays.copyOf(container, container.length * 2);
+            grow();
         }
         container[size++] = value;
         modCount++;
     }
 
+    private void grow() {
+        container = Arrays.copyOf(container, container.length * 2);
+    }
+
     @Override
     public T set(int index, T newValue) {
+        Objects.checkIndex(index, size);
         T result = container[index];
-        if (checkIndex(index)) {
-            container[index] = newValue;
-        }
+        container[index] = newValue;
         return result;
     }
 
     @Override
     public T remove(int index) {
-        T removeElement = null;
-        if (checkIndex(index)) {
-            removeElement = container[index];
-            System.arraycopy(container, index + 1, container, index, size - index - 1);
-            modCount++;
-            size--;
-        }
+        Objects.checkIndex(index, size);
+        T removeElement = container[index];
+        System.arraycopy(container, index + 1, container, index, size - index - 1);
+        modCount++;
+        size--;
         return removeElement;
     }
 
     @Override
     public T get(int index) {
-        checkIndex(index);
+        Objects.checkIndex(index, size);
         return container[index];
     }
 
@@ -81,11 +83,5 @@ public class SimpleArrayList<T> implements SimpleList<T> {
                 return container[index++];
             }
         };
-    }
-    boolean checkIndex(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        return true;
     }
 }
