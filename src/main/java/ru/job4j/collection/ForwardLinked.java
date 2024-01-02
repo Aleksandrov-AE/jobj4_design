@@ -45,6 +45,12 @@ public class ForwardLinked<E> implements Iterable<E> {
         size--;
         return delete.item;
     }
+    public void addFirst(E value) {
+        Node<E> firstNext = head;
+        head = new Node<>(value, firstNext);
+        modCount++;
+        size++;
+    }
 
     @Override
     public Iterator<E> iterator() {
