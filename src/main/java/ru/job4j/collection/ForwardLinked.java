@@ -40,8 +40,10 @@ public class ForwardLinked<E> implements Iterable<E> {
            throw new NoSuchElementException();
         } else {
             result = head.item;
+            head.item = null;
             head = delete.next;
             delete.next = null;
+
         }
         modCount++;
         size--;
