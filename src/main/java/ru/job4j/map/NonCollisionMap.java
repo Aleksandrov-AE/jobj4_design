@@ -35,12 +35,12 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int hash(int hashCode) {
-        return (hashCode == 0) ? 0 : hashCode ^ (hashCode >>> 16);
+        return hashCode ^ (hashCode >>> 16);
     }
 
     private int indexFor(int hash) {
         int n = capacity;
-        return (hash == 0) ? 0 : (n - 1) & hash;
+        return (n - 1) & hash;
     }
 
     private void expand() {
@@ -58,28 +58,27 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int getIndex(K key) {
-        int hash = hash(Objects.hashCode(key));
-        return indexFor(hash);
+        return indexFor(hash(Objects.hashCode(key)));
+    }
+
+    private boolean keyEquals(K newKey, K existKey) {
+        return Objects.hashCode(existKey) == Objects.hashCode(newKey)
+                && Objects.equals(existKey, newKey);
     }
 
 
     @Override
     public V get(K key) {
         int index = getIndex(key);
-        if (table[index] != null
-                && Objects.hashCode(table[index].key) == Objects.hashCode(key)
-                && Objects.equals(table[index].key, key)) {
-                return table[index].value;
-        }
-        return null;
+        return (table[index] != null
+                && keyEquals(key, table[index].key)) ? table[index].value : null;
     }
 
     @Override
     public boolean remove(K key) {
         int index = getIndex(key);
         if (table[index] != null
-                && Objects.hashCode(table[index].key) == Objects.hashCode(key)
-                && Objects.equals(table[index].key, key)) {
+                && keyEquals(key, table[index].key)) {
             table[index] = null;
             modCount++;
             count--;
@@ -114,9 +113,6 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         public K next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
-            }
-            if (modCount != expectedModCount) {
-                throw new ConcurrentModificationException();
             }
             return table[currentIndex++].key;
         }
