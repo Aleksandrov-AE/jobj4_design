@@ -24,7 +24,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         if (count >= capacity * LOAD_FACTOR) {
             expand();
         }
-        int index = indexFor(Objects.hashCode(key));
+        int index = getIndex(key);
         if (table[index] == null) {
             table[index] = new MapEntry<>(key, value);
             modCount++;
