@@ -31,8 +31,6 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
             count++;
             return  true;
         }
-        //проверка на коллизию
-        // замена или вставка
         return false;
     }
 
