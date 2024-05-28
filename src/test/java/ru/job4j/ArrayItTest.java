@@ -18,9 +18,9 @@ class ArrayItTest {
     @Test
     void whenReadSequence() {
         ArrayIt iterator = new ArrayIt(
-                new int[] {1, 2, 3}
+                new int[] {11, 2, 3}
         );
-        assertThat(iterator.next()).isEqualTo(1);
+        assertThat(iterator.next()).isEqualTo(11);
         assertThat(iterator.next()).isEqualTo(2);
         assertThat(iterator.next()).isEqualTo(3);
     }
