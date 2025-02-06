@@ -14,7 +14,10 @@ public class LogFilter {
     public List<String> filter() {
         try (BufferedReader input = new BufferedReader(new FileReader(file))) {
             return input.lines()
-                    .filter(s -> s.contains(" 404 "))
+                    .filter(s -> {
+                        String[] str = s.split(" ");
+                        return str.length > 2 && "404".equals(str[str.length - 2]);
+                    })
                     .collect(Collectors.toList());
         } catch (IOException e) {
             throw new RuntimeException("Error reading file" + file);
