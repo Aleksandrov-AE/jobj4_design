@@ -5,7 +5,7 @@ import java.io.*;
 public class Analysis {
     public void unavailable(String source, String target) {
         boolean access = true;
-        String startUnavailable = " ";
+        String startUnavailable = "";
         String endUnavailable;
         try (BufferedReader in = new BufferedReader(new FileReader(source));
         PrintWriter out = new PrintWriter(new FileOutputStream(target))) {
@@ -25,6 +25,7 @@ public class Analysis {
                     access = true;
                 }
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
