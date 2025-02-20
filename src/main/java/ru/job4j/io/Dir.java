@@ -14,7 +14,7 @@ public class Dir {
         }
         for (File subfile : Objects.requireNonNull(file.listFiles())) {
             if (subfile.isFile()) {
-                System.out.printf(subfile.getAbsoluteFile() + " Размер файла: %s%n", subfile.length());
+                System.out.printf("%s Размер файла: %s%n", subfile.getAbsoluteFile(), subfile.length());
             }
         }
     }
