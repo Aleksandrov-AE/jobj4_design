@@ -9,13 +9,16 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 
 public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
-    Map<FileProperty, Set<Path>> result = new HashMap<>();
+    private Map<FileProperty, Set<Path>> result = new HashMap<>();
     public  void print() {
-        result.entrySet().stream().filter(e -> e.getValue().size() > 1).forEach(e -> {
-            System.out.println(e.getKey().getName() + " - " + e.getKey().getSize() / 1000 + "kb");
-            e.getValue().forEach(path -> System.out.println(" " + path));
-        });
+        result.entrySet().stream()
+                .filter(e -> e.getValue().size() > 1)
+                .forEach(e -> {
+                    System.out.printf("%s - %dkb%n", e.getKey().getName(), e.getKey().getSize() / 1000);
+                    e.getValue().forEach(path -> System.out.println(" " + path));
+                });
     }
+
     @Override
     public FileVisitResult visitFile(Path file,
                                      BasicFileAttributes attributes) throws IOException {
@@ -23,12 +26,8 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
             return FileVisitResult.CONTINUE;
         }
         FileProperty fileProperty = new FileProperty(Files.size(file), file.getFileName().toString());
-        if (result.containsKey(fileProperty)) {
-            result.get(fileProperty).add(file);
-        } else {
-            result.put(fileProperty, new HashSet<>());
-            result.get(fileProperty).add(file);
-        }
+        result.computeIfAbsent(fileProperty, k -> new HashSet<>())
+                .add(file);
 
         return super.visitFile(file, attributes);
     }
