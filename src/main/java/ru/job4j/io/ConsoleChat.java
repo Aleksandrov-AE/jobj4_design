@@ -18,24 +18,25 @@ public class ConsoleChat {
     public void run()  {
         Random random = new Random();
         List<String> log  = new ArrayList<>();
+        List<String> answer =  readPhrases();
         boolean exit = false;
         String line;
         Scanner scanner = new Scanner(System.in);
         while (!exit) {
             line = scanner.nextLine();
-            if (line.equals(STOP)) {
+            if (STOP.equals(line)) {
                 log.add(line);
                do {
                    line = scanner.nextLine();
                    log.add(line);
-               } while (!line.equals(CONTINUE));
+               } while (!CONTINUE.equals(line));
             } else {
-                if (line.equals(OUT)) {
+                if (OUT.equals(line)) {
                     log.add(line);
                     exit = true;
                 } else {
                     log.add(line);
-                    line = readPhrases().get(random.nextInt(4));
+                    line = answer.get(random.nextInt(answer.size()));
                     System.out.println(line);
                     log.add(line);
                 }
