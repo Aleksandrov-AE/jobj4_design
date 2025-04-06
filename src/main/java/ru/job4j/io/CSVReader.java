@@ -31,7 +31,7 @@ public class CSVReader {
                 String[] line = scanner.nextLine().split(delimiter);
                 lines.add(index.stream().map(i -> line[i]).collect(Collectors.joining(delimiter)));
             }
-            if (dataReceiver.equals("stdout")) {
+            if ("stdout".equals(dataReceiver)) {
                 lines.forEach(System.out::println);
             } else {
                 Files.write(Path.of(dataReceiver), lines);
