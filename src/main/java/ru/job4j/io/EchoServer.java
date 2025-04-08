@@ -20,11 +20,19 @@ public class EchoServer {
                     String messege = request.split(" ")[1];
                     Pattern pattern = Pattern.compile("msg=([^&]+)");
                     Matcher matcher = pattern.matcher(messege);
+
                     if (matcher.find()) {
                         String msgValue = matcher.group(1);
-                        if ("Bye".equals(msgValue)) {
+                        if ("Exit".equals(msgValue)) {
                             server.close();
+                        } else {
+                            if ("Hello".equals(msgValue)) {
+                               output.write("Hello\r\n\r\n".getBytes());
+                            } else {
+                                output.write("What\r\n\r\n".getBytes());
+                            }
                         }
+
                     }
                     for (String string = input.readLine(); string != null && !string.isEmpty(); string = input.readLine()) {
                         System.out.println(string);
