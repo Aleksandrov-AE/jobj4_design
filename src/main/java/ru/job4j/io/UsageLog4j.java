@@ -17,5 +17,6 @@ public class UsageLog4j {
         char c  = 'a';
         boolean is = true;
         LOG.debug("info i : {}, b : {}, s : {}, l : {}, d : {}, f : {}, c : {}, is : {}", i, b, s, l, d, f, c, is);
+        LOG.error("Error");
     }
 }
