@@ -1,12 +1,23 @@
 package ru.job4j.serialization;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.Objects;
 
+@XmlRootElement(name = "address")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Address {
     private String country;
     private String city;
     private String street;
+    @XmlAttribute
     private int index;
+
+    public Address() {
+    }
 
     public Address(String country, String city, String street, int index) {
         this.country = country;
