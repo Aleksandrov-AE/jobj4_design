@@ -11,7 +11,7 @@ VALUES ('Пётр Иванов', 30, '2023-01-15', TRUE);
 
 UPDATE employee
 SET age = 31, is_active = FALSE
-WHERE name = 'Пётр Иванов';
+WHERE name = 'Пётр Иван';
 
 DELETE FROM employee
-WHERE name = 'Пётр Иванов';
+WHERE name = 'Пётр Иван';
