@@ -21,7 +21,7 @@ public class TableEditor implements AutoCloseable {
     }
 
     private void initConnection() {
-        try(InputStream in = TableEditor.class.getClassLoader().getResourceAsStream("state.properties")) {
+        try (InputStream in = TableEditor.class.getClassLoader().getResourceAsStream("state.properties")) {
             properties.load(in);
             String driver = properties.getProperty("db.driver");
             String url = properties.getProperty("db.url");
@@ -134,7 +134,7 @@ public class TableEditor implements AutoCloseable {
         String tableName = "test";
         String addColumnName = "pet";
         String addColumnNameType = "varchar(20)";
-        try(TableEditor editor = new TableEditor(new Properties())) {
+        try (TableEditor editor = new TableEditor(new Properties())) {
             editor.createTable(tableName);
             System.out.println(editor.getTableScheme(tableName));
             editor.addColumn(tableName, addColumnName, addColumnNameType);
