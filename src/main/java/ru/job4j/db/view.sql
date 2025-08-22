@@ -12,3 +12,4 @@ JOIN genres g ON b.genre_id = g.id
 WHERE o.order_date >= CURRENT_DATE - INTERVAL '90 days'
 GROUP BY s.id, s.name
 HAVING COUNT(DISTINCT a.id) >= 2;
+
