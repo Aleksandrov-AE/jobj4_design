@@ -51,7 +51,7 @@ INSERT INTO car_transmissions (name) VALUES
 INSERT INTO cars (name, body_id, engine_id, transmission_id) VALUES
 ('Toyota Corolla',         1, 1, 2), -- седан, бензин 1.6, автомат
 ('Volkswagen Golf',        2, 3, 1), -- хэтчбек, дизель, механика
-('Tesla Model 3',          1, 4, 2), -- седан, электро, автомат
+('Tesla Model 5',          1, 4, 2), -- седан, электро, автомат
 ('Ford Focus Wagon',       3, 2, 1), -- универсал, бензин 2.0, механика
 ('Nissan Juke',            5, 1, 4), -- кроссовер, бензин 1.6, вариатор
 ('Honda CR-V Hybrid',      5, 5, 2); -- кроссовер, гибрид, автомат
