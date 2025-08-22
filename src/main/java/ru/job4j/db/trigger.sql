@@ -13,6 +13,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
  CREATE TRIGGER trg_apply_tax
  AFTER INSERT ON products
  FOR STATEMENT
