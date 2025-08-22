@@ -23,6 +23,7 @@ WHERE price = (
     FROM product
 );
 
+
 SELECT type.name as имя_типа, count(*) as Количество
 FROM product
 JOIN type ON type.id = product.type_id
