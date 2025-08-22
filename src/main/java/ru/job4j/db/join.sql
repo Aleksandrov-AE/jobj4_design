@@ -67,8 +67,8 @@ CREATE TABLE teens (
     gender VARCHAR(10)  -- можно 'male' / 'female'
 );
 INSERT INTO teens (name, gender) VALUES
-('Вася', 'male'),
-('Петя', 'male'),
+('Василий', 'male'),
+('Петр', 'male'),
 ('Маша', 'female'),
 ('Оля', 'female');
 
