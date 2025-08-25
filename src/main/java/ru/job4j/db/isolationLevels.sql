@@ -7,7 +7,7 @@ CREATE TABLE products (
 INSERT INTO products (name, stock) VALUES
 ('apple', 10),
 ('banana', 20),
-('carrot', 30);
+('potato', 30);
 
 
 BEGIN;
