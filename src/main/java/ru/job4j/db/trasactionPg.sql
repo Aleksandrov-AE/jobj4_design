@@ -1,3 +1,4 @@
+
 BEGIN;
 INSERT INTO products (name, stock) VALUES ('grape', 50);
 SAVEPOINT sp1;
