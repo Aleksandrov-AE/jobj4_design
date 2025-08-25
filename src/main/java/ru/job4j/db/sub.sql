@@ -12,7 +12,7 @@ INSERT INTO customers (first_name, last_name, age, country) VALUES
 ('Maria', 'Garcia', 34, 'Spain'),
 ('Ivan', 'Petrov', 41, 'Russia'),
 ('Akira', 'Tanaka', 25, 'Japan'),
-('Anna', 'Schmidt', 30, 'Germany'),
+('Ann', 'Schmidt', 30, 'Germany'),
 ('Claire', 'Dubois', 38, 'France');
 
 select first_name, last_name, age
