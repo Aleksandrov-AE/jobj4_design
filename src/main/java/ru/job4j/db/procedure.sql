@@ -17,6 +17,7 @@ END;
 $$;
 
 
+
 CALL delete_product_by_id(3);
 
 
@@ -36,5 +37,6 @@ BEGIN
     RETURN deleted_count;
 END;
 $$;
+
 
 SELECT delete_zero_count_products();
