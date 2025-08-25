@@ -51,10 +51,9 @@ INSERT INTO car_transmissions (name) VALUES
 INSERT INTO cars (name, body_id, engine_id, transmission_id) VALUES
 ('Toyota Corolla',         1, 1, 2), -- седан, бензин 1.6, автомат
 ('Volkswagen Golf',        2, 3, 1), -- хэтчбек, дизель, механика
-('Tesla Model 5',          1, 4, 2), -- седан, электро, автомат
 ('Ford Focus Wagon',       3, 2, 1), -- универсал, бензин 2.0, механика
 ('Nissan Juke',            5, 1, 4), -- кроссовер, бензин 1.6, вариатор
-('Honda CR-V Hybrid',      5, 5, 2); -- кроссовер, гибрид, автомат
+('Honda CR-V Hybrid',      5, 5, 2), -- кроссовер, гибрид, автомат
 ('lada cross',     null, null, null);
 
 
@@ -77,5 +76,5 @@ WHERE c.id IS NULL;
 
 SELECT t.id, t.name
 FROM car_transmissions t
-LEFT JOIN cars c ON t.id = c.engine_id
-WHERE t.id IS NULL;
+LEFT JOIN cars c ON t.id = c.transmission_id
+WHERE c.id IS NULL;
