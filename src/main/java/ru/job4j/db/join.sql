@@ -82,4 +82,4 @@ CROSS JOIN
 WHERE
     t1.gender = 'male'
     AND t2.gender = 'female'
-    AND t1.name < t2.name;
+
