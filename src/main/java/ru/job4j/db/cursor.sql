@@ -18,5 +18,6 @@ FETCH FORWARD 0 FROM products_cursor;
 MOVE BACKWARD 1 FROM products_cursor;
 FETCH FORWARD 0 FROM products_cursor;
 
+
 CLOSE products_cursor;
 COMMIT;
