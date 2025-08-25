@@ -34,16 +34,16 @@ VALUES ('Гарри Поттер и узник Акабана', 'Джоан Ро
     from book;
 
     select name
-    from movie
+    from book
     except
     select title
-    from book;
+    from movie;
 
 
-    SELECT name AS title FROM movie
+    (SELECT name AS title FROM movie
     EXCEPT
-    SELECT title FROM book
+    SELECT title FROM book)
     UNION
-    SELECT title FROM book
+    (SELECT title FROM book
     EXCEPT
-    SELECT name FROM movie;
+    SELECT name FROM movie);
