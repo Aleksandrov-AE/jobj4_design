@@ -1,9 +1,11 @@
 package ru.job4j.gc;
 
+import java.lang.ref.SoftReference;
 import java.util.Random;
 
 public class GCTypeDemo {
     public static void main(String[] args) {
+        SoftReference<GCTypeDemo> softReference = new SoftReference<GCTypeDemo>(new GCTypeDemo());
         Random random = new Random();
         int length = 100;
         String[] data = new String[1_000_000];
