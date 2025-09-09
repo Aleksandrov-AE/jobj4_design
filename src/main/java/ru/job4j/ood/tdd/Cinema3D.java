@@ -1,13 +1,12 @@
 package ru.job4j.ood.tdd;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class Cinema3D implements Cinema {
 
     private List<Session> sessions = new ArrayList<Session>();
+   Map<Integer, Integer> seats = new HashMap<>();
 
     @Override
     public List<Session> find(Predicate<Session> filter) {
@@ -19,6 +18,10 @@ public class Cinema3D implements Cinema {
         if (row <= 0 || column <= 0) {
             throw new IllegalArgumentException();
         }
+        if (seats.containsKey(row) && seats.get(row) == column) {
+            throw new IllegalStateException();
+        }
+        seats.put(row, column);
         return new Ticket3D(account, row, column, date);
     }
 
