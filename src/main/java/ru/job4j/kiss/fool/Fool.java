@@ -16,7 +16,7 @@ public class Fool {
         }
     }
 
-    public static int getStartAt(int startAt, String answer) {
+    private static int getStartAt(int startAt, String answer) {
         startAt++;
         String aiAnswer = fizzBuzz(startAt);
             if (!aiAnswer.equals(answer)) {
@@ -27,7 +27,7 @@ public class Fool {
     }
 
 
-    public static String fizzBuzz(int startAt) {
+    private static String fizzBuzz(int startAt) {
         if (startAt % 3 == 0 && startAt % 5 == 0) {
             return  "FizzBuzz";
         } else if (startAt % 3 == 0) {

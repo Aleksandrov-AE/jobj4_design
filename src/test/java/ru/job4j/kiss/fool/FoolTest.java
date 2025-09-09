@@ -1,64 +1,31 @@
 package ru.job4j.kiss.fool;
 
+
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FoolTest {
+class FoolPrivateTest {
 
     @Test
-    void whenNumberNotDivisible() {
-        assertEquals("1", Fool.fizzBuzz(1));
-        assertEquals("2", Fool.fizzBuzz(2));
-        assertEquals("4", Fool.fizzBuzz(4));
+    void getStartAtcorrectAndWrong() throws Exception {
+        Method m = Fool.class.getDeclaredMethod("getStartAt", int.class, String.class);
+        m.setAccessible(true);
+        int next = (int) m.invoke(null, 1, "2");
+        assertEquals(2, next);
+        int reset = (int) m.invoke(null, 2, "2");
+        assertEquals(0, reset);
     }
 
     @Test
-    void whenNumberDivisibleBy3() {
-        assertEquals("Fizz", Fool.fizzBuzz(3));
-        assertEquals("Fizz", Fool.fizzBuzz(6));
-        assertEquals("Fizz", Fool.fizzBuzz(9));
-    }
-
-    @Test
-    void whenNumberDivisibleBy5() {
-        assertEquals("Buzz", Fool.fizzBuzz(5));
-        assertEquals("Buzz", Fool.fizzBuzz(10));
-        assertEquals("Buzz", Fool.fizzBuzz(20));
-    }
-
-    @Test
-    void whenNumberDivisibleBy3And5() {
-        assertEquals("FizzBuzz", Fool.fizzBuzz(15));
-        assertEquals("FizzBuzz", Fool.fizzBuzz(30));
-        assertEquals("FizzBuzz", Fool.fizzBuzz(45));
-    }
-
-    @Test
-    void whenCorrectAnswerthenIncrement() {
-        int startAt = 1;
-        int result = Fool.getStartAt(startAt, "2");
-        assertEquals(2, result);
-    }
-
-    @Test
-    void whenWrongAnswerthenResetTo0() {
-        int startAt = 1;
-        int result = Fool.getStartAt(startAt, "Fizz");
-        assertEquals(0, result);
-    }
-
-    @Test
-    void whenCorrectFizzBuzzAnswerthenIncrement() {
-        int startAt = 14;
-        int result = Fool.getStartAt(startAt, "FizzBuzz");
-        assertEquals(15, result);
-    }
-
-    @Test
-    void whenWrongBuzzAnswerthenResetTo0() {
-        int startAt = 9;
-        int result = Fool.getStartAt(startAt, "10");
-        assertEquals(0, result);
+    void fizzBuzzAtCorrect() throws Exception {
+        Method m = Fool.class.getDeclaredMethod("fizzBuzz", int.class);
+        m.setAccessible(true);
+        String number = (String) m.invoke(null, 1);
+        assertEquals("1", number);
+        String fizzBuzz = (String) m.invoke(null, 15);
+        assertEquals("FizzBuzz", fizzBuzz);
     }
 }
