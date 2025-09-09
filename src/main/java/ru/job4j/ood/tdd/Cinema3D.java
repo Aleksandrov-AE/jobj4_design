@@ -5,8 +5,8 @@ import java.util.function.Predicate;
 
 public class Cinema3D implements Cinema {
 
-    private List<Session> sessions = new ArrayList<Session>();
-   Map<Integer, Integer> seats = new HashMap<>();
+    private final List<Session> sessions = new ArrayList<>();
+    private final Map<Integer, Integer> seats = new HashMap<>();
 
     @Override
     public List<Session> find(Predicate<Session> filter) {
