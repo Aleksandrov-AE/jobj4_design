@@ -53,9 +53,9 @@ public class Cinema3DTest {
         Cinema cinema = new Cinema3D();
         Calendar date = Calendar.getInstance();
 
-        cinema.buy(a1, 3, 4, date);
+        cinema.buy(a1, 4, 4, date);
 
-        assertThatThrownBy(() -> cinema.buy(a2, 3, 4, date))
+        assertThatThrownBy(() -> cinema.buy(a2, 4, 4, date))
                 .isInstanceOf(IllegalStateException.class);
     }
 
