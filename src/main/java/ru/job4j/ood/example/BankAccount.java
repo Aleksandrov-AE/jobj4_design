@@ -1,4 +1,4 @@
-package ru.job4j.srp.example;
+package ru.job4j.ood.example;
 
 class BankAccount {
     private double balance;

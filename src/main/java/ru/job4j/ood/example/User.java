@@ -1,4 +1,4 @@
-package ru.job4j.srp.example;
+package ru.job4j.ood.example;
 
 class User {
     private String name;
