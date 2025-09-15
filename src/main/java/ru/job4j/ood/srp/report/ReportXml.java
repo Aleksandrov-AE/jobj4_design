@@ -28,7 +28,7 @@ public class ReportXml implements Report {
     public String generate(Predicate<Employee> filter) {
         List<Employee> employees = store.findBy(filter);
         List<EmployeeXml> employeesXml = employees.stream()
-                .map(e -> new EmployeeXml(e.getName(), dateTimeParser.parse(e.getFired()), dateTimeParser.parse(e.getFired()), e.getSalary()))
+                .map(e -> new EmployeeXml(e.getName(), dateTimeParser.parse(e.getHired()), dateTimeParser.parse(e.getFired()), e.getSalary()))
                 .toList();
         String xml = "";
         try (StringWriter writer = new StringWriter()) {
