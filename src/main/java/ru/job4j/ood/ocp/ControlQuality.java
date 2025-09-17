@@ -8,12 +8,11 @@ import java.util.List;
 
 public class ControlQuality {
     private final List<Store> stores;
-    private final List<Food> foods;
-    public ControlQuality(List<Store> stores, List<Food> foods) {
+    public ControlQuality(List<Store> stores) {
         this.stores = stores;
-        this.foods = foods;
+
     }
-    public void distribute(LocalDate now) {
+    public void distribute(List<Food> foods, LocalDate now) {
         for (Food food : foods) {
             for (Store store : stores) {
                 if (store.accept(food, now)) {
