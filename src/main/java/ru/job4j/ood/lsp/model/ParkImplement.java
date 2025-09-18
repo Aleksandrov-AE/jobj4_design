@@ -41,18 +41,16 @@ public class ParkImplement implements Parking {
     }
 
     @Override
-    public boolean park(Vehicle vehicle) {
-        boolean accept = false;
+    public Ticket park(Vehicle vehicle) {
+        Ticket ticket = new Ticket();
         Spot reservedPreviosSpot = null;
-        Iterator<Spot> spotIterator = spots.iterator();
-        while (spotIterator.hasNext()) {
-            Spot spot = spotIterator.next();
+        for (Spot spot : spots) {
             if (spot.isBusy()) {
                 continue;
             }
             if (vehicle.canPark(spot)) {
                 spot.accept(vehicle);
-                accept = true;
+                ticket.reservSpot(spot);
                 break;
             } else {
                 if (reservedPreviosSpot == null) {
@@ -60,25 +58,21 @@ public class ParkImplement implements Parking {
                 } else {
                     reservedPreviosSpot.accept(vehicle);
                     spot.accept(vehicle);
-                    accept = true;
+                    ticket.reservSpot(reservedPreviosSpot);
+                    ticket.reservSpot(spot);
                     break;
                 }
             }
         }
-        return accept;
+        return ticket;
 
         }
 
     @Override
-    public boolean unpark(Vehicle vehicle) {
-        boolean release = false;
-        for (Spot spot : spots) {
-            if (spot.getVehicle().equals(vehicle)) {
-                spot.release();
-                release = true;
-            }
+    public void unpark(Ticket ticket) {
+        for (Spot spot : ticket.getReservedSpots()) {
+            spot.release();
         }
-        return release;
     }
 
 }
