@@ -54,15 +54,20 @@ public class ParkImplement implements Parking {
                 ticket.reservSpot(spot);
                 break;
             } else {
-                if (reservedPreviosSpot == null) {
-                    reservedPreviosSpot = spot;
+                if (vehicle.getFit() > spot.getSize() && spot.getSize() == 1) {
+                    if (reservedPreviosSpot == null) {
+                        reservedPreviosSpot = spot;
+                    } else {
+                        reservedPreviosSpot.accept(vehicle);
+                        spot.accept(vehicle);
+                        ticket.reservSpot(reservedPreviosSpot);
+                        ticket.reservSpot(spot);
+                        break;
+                    }
                 } else {
-                    reservedPreviosSpot.accept(vehicle);
-                    spot.accept(vehicle);
-                    ticket.reservSpot(reservedPreviosSpot);
-                    ticket.reservSpot(spot);
-                    break;
+                    reservedPreviosSpot = null;
                 }
+
             }
         }
         return ticket;

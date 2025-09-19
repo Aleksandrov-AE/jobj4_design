@@ -57,4 +57,15 @@ class ParkImplementTest {
         assertThat(ticketWithoutSpot.getReservedSpots().size()).isEqualTo(0);
     }
 
+    @Test
+    void checkThatCarParkOnCargoSpotOnly() {
+        ParkImplement parkImplement = new ParkImplement(1, 3);
+        Ticket ticketCar1 = parkImplement.park(new Car(1));
+        Ticket ticketCar2 = parkImplement.park(new Car(2));
+        int size = parkImplement.getBusySpots().size();
+        assertThat(size).isEqualTo(1);
+        assertThat(ticketCar2.getReservedSpots().size()).isEqualTo(0);
+    }
+
+
 }
