@@ -3,12 +3,15 @@ package ru.job4j.ood.lsp.model.spot;
 import ru.job4j.ood.lsp.model.vehicle.Vehicle;
 
 public abstract class Spot {
-    private int id;
-    private int size;
+    private final int id;
+    private final int size;
     private Vehicle vehicle;
-    private boolean busy = false;
+    private boolean busy;
 
     public Spot(int id, int size) {
+        if (id < 0) {
+            throw new IllegalArgumentException("id must be a positive integer");
+        }
         this.id = id;
         this.size = size;
     }
@@ -30,9 +33,14 @@ public abstract class Spot {
         busy = true;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
+    /*public Optional<Vehicle> getVehicle() {
+        if (busy) {
+            return Optional.of(vehicle);
+        } else {
+            return Optional.empty();
+        }
+    }*/
+
     public void release() {
         busy = false;
         vehicle = null;

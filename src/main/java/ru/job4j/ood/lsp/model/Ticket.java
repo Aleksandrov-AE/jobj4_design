@@ -8,6 +8,12 @@ import java.util.List;
 
 public class Ticket {
     private final List<Spot> reservedSpots = new ArrayList<>();
+    private final Vehicle vehicle;
+
+    public Ticket(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
     void reservSpot(Spot spot) {
         reservedSpots.add(spot);
     }
@@ -16,7 +22,6 @@ public class Ticket {
     }
 
     public Vehicle getVehicle() {
-        return reservedSpots.get(0).getVehicle();
+        return vehicle;
     }
-
 }

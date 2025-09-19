@@ -4,13 +4,18 @@ import ru.job4j.ood.lsp.model.spot.Spot;
 
 import java.util.Objects;
 
-public class CargoCar implements Vehicle {
-    private int id;
+public class Cargo implements Vehicle {
+    private final int id;
     private final int size = 2;
 
-    public CargoCar(int id) {
+    public Cargo(int id) {
+
+        if (id < 0) {
+            throw new IllegalArgumentException("id must be a positive integer");
+        }
         this.id = id;
     }
+
     @Override
     public int getId() {
         return id;
@@ -34,7 +39,7 @@ public class CargoCar implements Vehicle {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CargoCar cargoCar = (CargoCar) o;
+        Cargo cargoCar = (Cargo) o;
         return id == cargoCar.id;
     }
 

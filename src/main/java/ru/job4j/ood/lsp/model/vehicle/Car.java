@@ -6,9 +6,12 @@ import java.util.Objects;
 
 public class Car implements Vehicle {
     private final int size = 1;
-    private int id;
+    private final int id;
 
     public Car(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("id must be a positive integer");
+        }
         this.id = id;
     }
     @Override

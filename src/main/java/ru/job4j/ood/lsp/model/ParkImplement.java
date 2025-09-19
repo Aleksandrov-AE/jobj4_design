@@ -42,7 +42,7 @@ public class ParkImplement implements Parking {
 
     @Override
     public Ticket park(Vehicle vehicle) {
-        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket(vehicle);
         Spot reservedPreviosSpot = null;
         for (Spot spot : spots) {
             if (spot.isBusy()) {
@@ -69,10 +69,11 @@ public class ParkImplement implements Parking {
         }
 
     @Override
-    public void unpark(Ticket ticket) {
+    public Ticket unpark(Ticket ticket) {
         for (Spot spot : ticket.getReservedSpots()) {
             spot.release();
         }
+        return ticket;
     }
 
 }
