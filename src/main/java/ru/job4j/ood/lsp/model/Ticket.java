@@ -5,6 +5,7 @@ import ru.job4j.ood.lsp.model.vehicle.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Ticket {
     private final List<Spot> reservedSpots = new ArrayList<>();
@@ -21,7 +22,11 @@ public class Ticket {
         return List.copyOf(reservedSpots);
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public Optional<Vehicle> getVehicle() {
+        if (vehicle == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(vehicle);
+        }
     }
 }
