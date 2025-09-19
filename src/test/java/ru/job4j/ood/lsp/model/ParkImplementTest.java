@@ -1,8 +1,10 @@
 package ru.job4j.ood.lsp.model;
 
 import org.junit.jupiter.api.Test;
+
 import ru.job4j.ood.lsp.model.vehicle.Car;
 import ru.job4j.ood.lsp.model.vehicle.Cargo;
+import ru.job4j.ood.lsp.parkservice.ParkImplement;
 
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

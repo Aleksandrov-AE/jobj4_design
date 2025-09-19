@@ -14,7 +14,7 @@ public class Ticket {
         this.vehicle = vehicle;
     }
 
-    void reservSpot(Spot spot) {
+    public void reservSpot(Spot spot) {
         reservedSpots.add(spot);
     }
     public List<Spot> getReservedSpots() {

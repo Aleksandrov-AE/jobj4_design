@@ -1,5 +1,6 @@
-package ru.job4j.ood.lsp.model;
+package ru.job4j.ood.lsp.parkservice;
 
+import ru.job4j.ood.lsp.model.Ticket;
 import ru.job4j.ood.lsp.model.vehicle.Vehicle;
 
 public interface Parking {

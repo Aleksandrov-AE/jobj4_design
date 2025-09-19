@@ -1,5 +1,6 @@
-package ru.job4j.ood.lsp.model;
+package ru.job4j.ood.lsp.parkservice;
 
+import ru.job4j.ood.lsp.model.Ticket;
 import ru.job4j.ood.lsp.model.spot.CarSpot;
 import ru.job4j.ood.lsp.model.spot.CargoSpot;
 import ru.job4j.ood.lsp.model.spot.Spot;
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 public class ParkImplement implements Parking {
     private final List<Spot> spots;
 
-    ParkImplement(int carSpotsCount, int cargoSpotsCount) {
+    public ParkImplement(int carSpotsCount, int cargoSpotsCount) {
         if (carSpotsCount <= 0 && cargoSpotsCount <= 0) {
             throw new IllegalArgumentException("carSpotsCount and cargoSpotsCount must be greater than 0");
         }
@@ -26,9 +27,9 @@ public class ParkImplement implements Parking {
 
     }
 
-    public List<Spot> getAllSpots() {
+    /*public List<Spot> getAllSpots() {
         return List.copyOf(spots);
-    }
+    }*/
 
     public List<Spot> getBusySpots() {
         List<Spot> busySpots = new ArrayList<>();
