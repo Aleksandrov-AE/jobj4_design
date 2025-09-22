@@ -16,6 +16,11 @@ public abstract class AbstractStore implements Store {
     public Collection<Food> getAllFoods() {
         return List.copyOf(foods);
     }
+    public Collection<Food> freeUp() {
+        Collection<Food> result = List.copyOf(foods);
+        foods.clear();
+        return result;
+    }
 
     public double spent(LocalDate expiryDatete, LocalDate createDate, LocalDate now) {
         long total = ChronoUnit.DAYS.between(createDate, expiryDatete);

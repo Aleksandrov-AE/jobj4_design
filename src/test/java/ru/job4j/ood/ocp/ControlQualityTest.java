@@ -76,6 +76,18 @@ class ControlQualityTest {
 
     }
 
+    @Test
+    void testShopDiscountAndResort() {
+        Food sauceSpent80 = new Food("Cheese", now.plusDays(1), now.minusDays(5), 100);
+        foods.add(sauceSpent80);
+        ControlQuality q = new ControlQuality(store);
+        q.distribute(foods, now);
+        q.resort(now);
+        assertEquals(shop.getAllFoods().size(), 1);
+        assertEquals(sauceSpent80.currentPrice(), 80);
+
+    }
+
 
 
 }
