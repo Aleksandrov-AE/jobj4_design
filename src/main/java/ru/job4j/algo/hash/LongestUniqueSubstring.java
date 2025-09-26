@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class LongestUniqueSubstring {
     public static String longestUniqueSubstring(String str) {
-        String result = "";
         Map<Character, Integer> map = new HashMap<>();
         int left = 0;
         int bestStart = 0;
@@ -30,3 +29,5 @@ public class LongestUniqueSubstring {
         System.out.println(longestUniqueSubstring("aaaaa"));
     }
 }
+// Временная сложность O(n)
+// Пространственная сложность в худшем случаи O(n) в лучшем O(1)
